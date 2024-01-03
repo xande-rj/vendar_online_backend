@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user/interfaces/user.entity';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,10 +19,13 @@ import { UserEntity } from './user/interfaces/user.entity';
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,
-    synchronize:true,
     entities:[UserEntity],
+    logging: true,
+    migrations: [`${__dirname}/migration/{.ts,*.js}`],
+    migrationsRun: true
   })
   ,UserModule,
+
 ],
   controllers: [AppController],
   providers: [AppService],

@@ -20,9 +20,11 @@ export class UserService {
 
     return this.useRepository.save({
       ...createruserdto,
+      typeUser:1,
       password: passwordhash,
     });
   }
+
 
   async getAll(): Promise<UserEntity[]> {
     return this.useRepository.find();
