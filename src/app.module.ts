@@ -4,7 +4,11 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './user/interfaces/user.entity';
+import { UserEntity } from './user/entities/user.entity';
+import { AddressModule } from './address/address.module';
+import { CityModule } from './city/city.module';
+import { StateModule } from './state/state.module';
+import { StateEntity } from './state/entities/state.entity';
 
 
 @Module({
@@ -19,12 +23,12 @@ import { UserEntity } from './user/interfaces/user.entity';
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,
-    entities:[UserEntity],
+    entities:[UserEntity,StateEntity],
     logging: true,
     migrations: [`${__dirname}/migration/{.ts,*.js}`],
     migrationsRun: true
   })
-  ,UserModule,
+  ,UserModule, AddressModule, CityModule, StateModule,
 
 ],
   controllers: [AppController],
