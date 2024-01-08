@@ -9,6 +9,8 @@ import { AddressModule } from './address/address.module';
 import { CityModule } from './city/city.module';
 import { StateModule } from './state/state.module';
 import { StateEntity } from './state/entities/state.entity';
+import { CityEntity } from './city/entities/city.entity';
+import { CacheModule } from './cache/cache.module';
 
 
 @Module({
@@ -23,12 +25,12 @@ import { StateEntity } from './state/entities/state.entity';
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,
-    entities:[UserEntity,StateEntity],
+    entities:[UserEntity,StateEntity,CityEntity],
     logging: true,
     migrations: [`${__dirname}/migration/{.ts,*.js}`],
     migrationsRun: true
   })
-  ,UserModule, AddressModule, CityModule, StateModule,
+  ,UserModule, AddressModule, CityModule, StateModule, CacheModule,
 
 ],
   controllers: [AppController],
