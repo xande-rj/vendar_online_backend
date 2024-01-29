@@ -11,6 +11,7 @@ import { StateModule } from './state/state.module';
 import { StateEntity } from './state/entities/state.entity';
 import { CityEntity } from './city/entities/city.entity';
 import { CacheModule } from './cache/cache.module';
+import { AddressEntity } from './address/entities/address.entity';
 
 
 @Module({
@@ -25,7 +26,7 @@ import { CacheModule } from './cache/cache.module';
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,
-    entities:[UserEntity,StateEntity,CityEntity],
+    entities:[UserEntity,StateEntity,CityEntity,AddressEntity],
     logging: true,
     migrations: [`${__dirname}/migration/{.ts,*.js}`],
     migrationsRun: true

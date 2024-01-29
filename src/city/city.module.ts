@@ -10,6 +10,7 @@ import { CacheModule } from 'src/cache/cache.module';
   CacheModule,
   ],
   providers: [CityService],
-  controllers: [CityController]
+  controllers: [CityController],
+  exports: [CityService]
 })
 export class CityModule {}
