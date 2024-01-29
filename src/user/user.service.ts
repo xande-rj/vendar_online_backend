@@ -42,4 +42,13 @@ export class UserService {
     }
     return user;
   }
+
+  async getUserByIdRelation(userId: number){
+    return this.useRepository.findOne({
+      where:{
+        id:userId
+      },
+      relations:['addresses']
+    })
+  }
 }
