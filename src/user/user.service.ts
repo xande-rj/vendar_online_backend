@@ -30,15 +30,29 @@ export class UserService {
     return this.useRepository.find();
   }
 
-  async findUserById(userid: number): Promise<UserEntity> {
+  async findUserByemail(email: string): Promise<UserEntity> {
     const user = await this.useRepository.findOne({
       where: {
-        id: userid,
+        email,
       },
     });
 
     if (!user) {
-      throw new NotFoundException(`User id: ${userid} not found`);
+      throw new NotFoundException(`User Email: ${email} not found`);
+    }
+    return user;
+  }
+
+
+  async findUserById(userId: number): Promise<UserEntity> {
+    const user = await this.useRepository.findOne({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException(`User Id: ${userId} not found`);
     }
     return user;
   }
