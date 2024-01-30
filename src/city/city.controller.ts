@@ -4,10 +4,12 @@ import { CityEntity } from './entities/city.entity';
 
 @Controller('city')
 export class CityController {
-    constructor( private readonly cityservice : CityService ) {}
+  constructor(private readonly cityservice: CityService) {}
 
-    @Get('/:stateId')
-    async getallcitybiId(@Param ('stateId') stateId:number ): Promise<CityEntity[]>{
-        return this.cityservice.getallcitybiId(stateId)
-    }
+  @Get('/:stateId')
+  async getallcitybiId(
+    @Param('stateId') stateId: number,
+  ): Promise<CityEntity[]> {
+    return this.cityservice.getallcitybiId(stateId);
+  }
 }

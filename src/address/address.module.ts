@@ -7,8 +7,8 @@ import { UserModule } from 'src/user/user.module';
 import { CityModule } from 'src/city/city.module';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([AddressEntity]),UserModule,CityModule],
+  imports: [TypeOrmModule.forFeature([AddressEntity]), UserModule, CityModule],
   providers: [AddressService],
-  controllers: [AddressController]
+  controllers: [AddressController],
 })
 export class AddressModule {}

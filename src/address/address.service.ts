@@ -8,17 +8,19 @@ import { CityService } from 'src/city/city.service';
 
 @Injectable()
 export class AddressService {
-    constructor(
-        @InjectRepository(AddressEntity)
-        private readonly addressRepository : Repository<AddressEntity>,
-        private readonly useSevice : UserService,
-        private readonly cityService : CityService,
-        ){}
+  constructor(
+    @InjectRepository(AddressEntity)
+    private readonly addressRepository: Repository<AddressEntity>,
+    private readonly useSevice: UserService,
+    private readonly cityService: CityService,
+  ) {}
 
-        async createAddress(createAddressDto : CreateAddressDto,userId :number): Promise<AddressEntity>{
-            await this.useSevice.findUserById(userId)
-            await this.cityService.findCityById(createAddressDto.cityId)
-            return this.addressRepository.save({...createAddressDto,userId
-            })
-        }
+  async createAddress(
+    createAddressDto: CreateAddressDto,
+    userId: number,
+  ): Promise<AddressEntity> {
+    await this.useSevice.findUserById(userId);
+    await this.cityService.findCityById(createAddressDto.cityId);
+    return this.addressRepository.save({ ...createAddressDto, userId });
+  }
 }

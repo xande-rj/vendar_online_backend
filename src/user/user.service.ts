@@ -43,12 +43,18 @@ export class UserService {
     return user;
   }
 
-  async getUserByIdRelation(userId: number){
+  async getUserByIdRelation(userId: number) {
     return this.useRepository.findOne({
-      where:{
-        id:userId
+      where: {
+        id: userId,
       },
-      relations:['addresses']
-    })
+      relations: {
+        addresses: {
+          city: {
+            state: true,
+          },
+        },
+      },
+    });
   }
 }

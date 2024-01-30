@@ -14,4 +14,3 @@ export class StateService {
     return this.stateRepository.find();
   }
 }
-

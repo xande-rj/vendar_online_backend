@@ -5,11 +5,11 @@ import { StateService } from './state.service';
 @Controller('state')
 export class StateController {
   constructor(
-    private readonly StateService: StateService,
+    private readonly stateService: StateService,
   ) {} /*criando o service*/
 
   @Get()
   async getAllState(): Promise<StateEntity[]> {
-    return this.StateService.getAllState();
+    return this.stateService.getAllState();
   }
 }

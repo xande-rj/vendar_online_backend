@@ -13,27 +13,29 @@ import { CityEntity } from './city/entities/city.entity';
 import { CacheModule } from './cache/cache.module';
 import { AddressEntity } from './address/entities/address.entity';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
-    envFilePath: ['.env.development.local'],
-  }),
-  TypeOrmModule.forRoot({
-    type: 'postgres',
-    database: process.env.DB_DATABASE,
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASSWORD,
-    port: Number(process.env.DB_PORT),
-    username: process.env.DB_USER,
-    entities:[UserEntity,StateEntity,CityEntity,AddressEntity],
-    logging: true,
-    migrations: [`${__dirname}/migration/{.ts,*.js}`],
-    migrationsRun: true
-  })
-  ,UserModule, AddressModule, CityModule, StateModule, CacheModule,
-
-],
+      envFilePath: ['.env.development.local'],
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      database: process.env.DB_DATABASE,
+      host: process.env.DB_HOST,
+      password: process.env.DB_PASSWORD,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USER,
+      entities: [UserEntity, StateEntity, CityEntity, AddressEntity],
+      logging: true,
+      migrations: [`${__dirname}/migration/{.ts,*.js}`],
+      migrationsRun: true,
+    }),
+    UserModule,
+    AddressModule,
+    CityModule,
+    StateModule,
+    CacheModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
