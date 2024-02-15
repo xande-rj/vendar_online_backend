@@ -15,9 +15,10 @@ import { AddressEntity } from './address/entities/address.entity';
 import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
-import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './guards/roles.guard';
+import { Userr2Service } from './userr2/userr2.service';
+import { Userr2Service } from './userr2/userr2.service';
 
 @Module({
   imports: [
@@ -42,7 +43,6 @@ import { RolesGuard } from './guards/roles.guard';
     StateModule,
     CacheModule,
     AuthModule,
-    
   ],
   controllers: [AppController, AuthController],
   providers: [
@@ -52,6 +52,7 @@ import { RolesGuard } from './guards/roles.guard';
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
+    Userr2Service,
   ],
 })
 export class AppModule {}
